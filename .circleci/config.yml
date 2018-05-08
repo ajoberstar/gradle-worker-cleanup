@@ -1,0 +1,9 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: ajoberstar/circleci-openjdk-gradle:10-jdk
+    steps:
+      - checkout
+      - run:
+          command: ./gradlew worker

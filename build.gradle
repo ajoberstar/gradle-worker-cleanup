@@ -1,0 +1,13 @@
+import com.example.MyTask
+
+tasks.create("worker")
+
+(0..30).each { index ->
+  tasks.create("worker${index}", MyTask) { task ->
+    num = index
+    tasks.worker.dependsOn(task)
+    if (index > 0) {
+      dependsOn("worker${index - 1}")
+    }
+  }
+}

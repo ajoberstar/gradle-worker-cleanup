@@ -42,6 +42,13 @@ public class MyTask extends DefaultTask {
 
     public void run() {
       System.out.println("#" + num + ": running");
+
+      ProcessHandle.allProcesses()
+        .filter(p -> p.info().command().filter(cmd -> cmd.contains("java")).isPresent())
+        .forEach(p -> {
+          System.out.println("PID #" + p.pid() + " " + p.info().commandLine().or(() -> p.info().command()).orElse("unknown command"));
+        });
+
       Runtime.getRuntime().addShutdownHook(new Thread(() -> {
         System.out.println("#" + num + ": shutting down");
       }));

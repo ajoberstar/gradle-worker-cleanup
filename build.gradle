@@ -2,7 +2,7 @@ import com.example.MyTask
 
 tasks.create("worker")
 
-(0..30).each { index ->
+(0..100).each { index ->
   tasks.create("worker${index}", MyTask) { task ->
     num = index
     tasks.worker.dependsOn(task)

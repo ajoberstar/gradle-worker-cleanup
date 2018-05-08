@@ -6,4 +6,4 @@ jobs:
     steps:
       - checkout
       - run:
-          command: ./gradlew worker
+          command: ./gradlew worker --max-workers=32

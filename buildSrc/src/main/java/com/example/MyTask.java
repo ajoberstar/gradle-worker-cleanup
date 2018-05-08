@@ -26,7 +26,7 @@ public class MyTask extends DefaultTask {
     workerExecutor.submit(MyWork.class, worker -> {
       worker.setIsolationMode(IsolationMode.PROCESS);
       worker.params(num);
-      worker.getForkOptions().jvmArgs("-Xms1G", "-Xmx1G");
+      worker.getForkOptions().jvmArgs("-Xms2G", "-Xmx2G");
       // use different sysprop to force different worker processes for each
       worker.getForkOptions().systemProperty("my-worker-id", UUID.randomUUID().toString());
     });
